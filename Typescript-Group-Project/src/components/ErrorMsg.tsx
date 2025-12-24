@@ -1,6 +1,4 @@
-interface ErrorMsgProps {
-  children: React.ReactNode;
-}
+import type { ErrorMsgProps } from "../types/types";
 
 const ErrorMsg = ({ children }: ErrorMsgProps) => {
   return (

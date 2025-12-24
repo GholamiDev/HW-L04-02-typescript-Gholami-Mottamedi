@@ -1,14 +1,4 @@
-import type { ReactNode } from "react";
-
-interface CustomDelBtnProps {
-  label: string | ReactNode;
-  type?: "submit" | "button";
-  p: string;
-  size: string;
-  width?: string;
-  mt?: string;
-  onClick?: () => void;
-}
+import type { CustomDelBtnProps } from "../types/types";
 
 const CustomDelBtn = ({
   label,

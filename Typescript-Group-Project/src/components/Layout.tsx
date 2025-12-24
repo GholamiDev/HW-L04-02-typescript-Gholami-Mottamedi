@@ -37,7 +37,6 @@ const Layout = () => {
     navigate(`/register?role=${role}`);
   };
 
-  // بستن dropdown وقتی خارج از آن کلیک شد
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -60,7 +59,7 @@ const Layout = () => {
 
   return (
     <>
-      <div className="w-full bg-[#1E1F25] text-white">
+      <div className="w-full bg-[#1E1F25] text-white fixed z-20 top-0">
         <div className="container flex justify-self-center justify-between w-full p-3">
           <ul className="flex gap-4 text-sm sm:text-[18px]">
             <NavLink to="/" className="hover:text-[#5051f9] transition .4">
@@ -178,7 +177,6 @@ const Layout = () => {
           </ul>
         </div>
       </div>
-
       <Outlet />
       <ToastContainer
         position="top-right"

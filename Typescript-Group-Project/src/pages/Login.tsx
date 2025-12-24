@@ -10,11 +10,7 @@ import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAppDispatch } from "../store/hooks";
 import { setCurrentUser } from "../features/auth/authSlice";
-
-type LoginFormValues = {
-  username: string;
-  password: string;
-};
+import type { LoginFormValues } from "../types/types";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -87,7 +83,6 @@ const Login = () => {
         type="submit"
         width="w-[300px]"
         p="py-2"
-        color="[#5051f4]"
         size="text-[24px]"
         mt="mt-8"
       />

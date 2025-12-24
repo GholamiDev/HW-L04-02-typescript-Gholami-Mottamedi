@@ -7,12 +7,10 @@ const LoginDropdown = () => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    // فرض کن localStorage یا Redux state رو آپدیت می‌کنیم
     const currentUser = { username: "DemoUser", role, isLoggedin: true };
     localStorage.setItem("currentUser", JSON.stringify(currentUser));
 
-    // مثلا dispatch login هم می‌تونه اینجا باشه
-    navigate("/"); // بعد از login ریدایرکت به home
+    navigate("/");
     setOpen(false);
   };
 

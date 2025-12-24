@@ -1,17 +1,10 @@
 import { createSlice, nanoid, type PayloadAction } from "@reduxjs/toolkit";
-
-interface User {
-  id: string;
-  username: string;
-  password: string | number;
-  role: "user" | "admin";
-  isLoggedin: boolean;
-}
-
-type State = {
-  users: User[];
-  currentUser: User | null;
-};
+import type {
+  LoginPayload,
+  RegisterPayload,
+  State,
+  User,
+} from "../../types/types";
 
 const usersJSON: string = localStorage.getItem("usersAuth") || "[]";
 const usersFromStorage: User[] = JSON.parse(usersJSON) || [];
@@ -23,18 +16,6 @@ const initialState: State = {
   users: usersFromStorage,
   currentUser: currentFromStorage,
 };
-
-interface RegisterPayload {
-  username: string;
-  password: string | number;
-  role: "user" | "admin";
-}
-
-interface LoginPayload {
-  username: string;
-  password: string | number;
-  role: "user" | "admin";
-}
 
 const authSlice = createSlice({
   initialState,

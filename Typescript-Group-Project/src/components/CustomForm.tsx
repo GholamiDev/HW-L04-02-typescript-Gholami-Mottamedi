@@ -1,8 +1,4 @@
-interface CustomFormProps {
-  header?: string;
-  children?: React.ReactNode;
-  onSubmit?: () => void;
-}
+import type { CustomFormProps } from "../types/types";
 
 const CustomForm = ({ header, children, onSubmit }: CustomFormProps) => {
   return (

@@ -22,7 +22,6 @@ const Error = () => {
         <CustomBtn
           label="Back to Home"
           width="w-[140px]"
-          height="h-[35px]"
           size="text-sm"
           onClick={() => navigate("/")}
         />

@@ -13,12 +13,7 @@ import { useAppDispatch } from "../store/hooks";
 import { register as registerAction } from "../features/auth/authSlice";
 import { setCurrentUser } from "../features/auth/authSlice";
 import { toast } from "react-toastify";
-
-type RegisterFormValues = {
-  username: string;
-  password: string;
-  confirmPassword: string;
-};
+import type { RegisterFormValues } from "../types/types";
 
 const Register = () => {
   const navigate = useNavigate();

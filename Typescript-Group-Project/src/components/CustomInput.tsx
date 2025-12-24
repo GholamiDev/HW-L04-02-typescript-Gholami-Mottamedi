@@ -1,10 +1,4 @@
-interface CustomInputProps {
-  title?: string;
-  type: string;
-  nametag?: string;
-  placeholder?: string;
-  autoFocus?: boolean;
-}
+import type { CustomInputProps } from "../types/types";
 
 const CustomInput = ({
   title,
