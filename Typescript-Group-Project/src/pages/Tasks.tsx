@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { deleteTask, toggleTask } from "../features/tasks/taskSlice";
+import {
+  checkDeadline,
+  deleteTask,
+  toggleTask,
+} from "../features/tasks/taskSlice";
 
 import TaskModal from "../components/TaskModal";
 import CustomBtn from "../components/CustomBtn";
@@ -26,27 +30,14 @@ const Tasks = () => {
   };
 
   useEffect(() => {
-    const now = new Date();
-    let updated = false;
+    dispatch(checkDeadline());
 
-    const updatedTasks = allTasks.map((task) => {
-      if (
-        !task.completed &&
-        task.status !== "Deadline Reached" &&
-        new Date(task.deadline) < now
-      ) {
-        updated = true;
-        return {
-          ...task,
-          status: "Deadline Reached",
-        };
-      }
-      return task;
-    });
-    if (updated) {
-      localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-    }
-  }, []);
+    const interval = setInterval(() => {
+      dispatch(checkDeadline());
+    }, 60 * 1000);
+
+    return () => clearInterval(interval);
+  }, [dispatch]);
 
   const handleDelete = (taskId: string) => {
     const confirmed = window.confirm(

@@ -3,6 +3,8 @@ import type { CustomInputProps } from "../types/types";
 const CustomInput = ({
   title,
   type,
+  value,
+  onChange,
   placeholder,
   nametag,
   autoFocus,
@@ -16,6 +18,8 @@ const CustomInput = ({
         </label>
         <input
           type={type}
+          value={value}
+          onChange={onChange}
           name={nametag}
           placeholder={placeholder}
           autoFocus={autoFocus}

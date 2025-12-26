@@ -13,7 +13,8 @@ export interface CustomBtnProps {
 export interface CustomDelBtnProps {
   label: string | ReactNode;
   type?: "submit" | "button";
-  p: string;
+  p?: string;
+  height?: string;
   size: string;
   width?: string;
   mt?: string;
@@ -29,6 +30,8 @@ export interface CustomFormProps {
 export interface CustomInputProps {
   title?: string;
   type: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   nametag?: string;
   placeholder?: string;
   autoFocus?: boolean;

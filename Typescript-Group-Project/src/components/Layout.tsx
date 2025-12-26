@@ -57,35 +57,31 @@ const Layout = () => {
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
+  const linkClass = ({ isActive }: { isActive: boolean }) =>
+    isActive
+      ? "text-[#5051f9] transition duration-600"
+      : `hover:text-[#5051f9] transition duration-400`;
+
   return (
     <>
       <div className="w-full bg-[#1E1F25] text-white fixed z-20 top-0">
         <div className="container flex justify-self-center justify-between w-full p-3">
           <ul className="flex gap-4 text-sm sm:text-[18px]">
-            <NavLink to="/" className="hover:text-[#5051f9] transition .4">
+            <NavLink to="/" className={linkClass}>
               <li>Home</li>
             </NavLink>
             {currentUser?.role === "user" && (
               <>
-                <NavLink
-                  to="/tasks"
-                  className="hover:text-[#5051f9] transition .4"
-                >
+                <NavLink to="/tasks" className={linkClass}>
                   <li>Tasks</li>
                 </NavLink>
-                <NavLink
-                  to="/dashboard"
-                  className="hover:text-[#5051f9] transition .4"
-                >
+                <NavLink to="/dashboard" className={linkClass}>
                   <li>Dashboard</li>
                 </NavLink>
               </>
             )}
             {currentUser?.role === "admin" && (
-              <NavLink
-                to="/admin"
-                className="hover:text-[#5051f9] transition .4"
-              >
+              <NavLink to="/admin" className={linkClass}>
                 <li>Admin Dashboard</li>
               </NavLink>
             )}

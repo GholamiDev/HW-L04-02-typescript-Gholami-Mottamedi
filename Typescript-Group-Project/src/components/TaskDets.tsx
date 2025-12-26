@@ -17,7 +17,8 @@ const TaskDets = () => {
     .slice(0, 3);
 
   const handleView = () => {
-    if (user) navigate("/tasks");
+    if (user && user.role === "user") navigate("/tasks");
+    if (user && user.role === "admin") navigate("admin");
     else navigate("/login");
   };
 
@@ -35,12 +36,14 @@ const TaskDets = () => {
                   {new Date(task.createdAt).toLocaleTimeString()}
                 </span>
               </div>
-              <PlayCircleIcon
-                sx={{
-                  fontSize: "40px",
-                  color: "#5051f4",
-                }}
-              />
+              <div className="hidden md:block">
+                <PlayCircleIcon
+                  sx={{
+                    fontSize: "40px",
+                    color: "#5051f4",
+                  }}
+                />
+              </div>
             </div>
             <div className="bg-[#1E1F25] w-full flex items-center justify-between py-3 px-4 rounded-e-lg">
               <p>{task.title}</p>

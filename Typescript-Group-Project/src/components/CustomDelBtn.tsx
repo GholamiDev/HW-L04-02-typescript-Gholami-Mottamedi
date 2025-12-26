@@ -4,6 +4,7 @@ const CustomDelBtn = ({
   label,
   type,
   width,
+  height,
   p,
   size,
   mt,
@@ -14,7 +15,7 @@ const CustomDelBtn = ({
       <button
         type={type}
         onClick={onClick}
-        className={`bg-red-500 ${p} ${size} ${width} rounded-md ${mt} text-center cursor-pointer hover:shadow-red-500 shadow-sm transition-shadow .4`}
+        className={`bg-red-500 ${p} ${size} ${width} ${height} rounded-md ${mt} text-center cursor-pointer hover:shadow-[0_0_15px_rgba(0,0,0)] transition-shadow duration-400`}
       >
         {label}
       </button>

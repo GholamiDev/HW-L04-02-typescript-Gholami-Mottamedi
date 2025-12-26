@@ -6,6 +6,7 @@ const PrivateLayout = () => {
   console.log("CURRENT USER =>", user);
 
   if (!user) return <Navigate to="/login?role=user" replace />;
+  else if (user.role === "admin") return <Navigate to="/" replace />;
 
   return <Outlet />;
 };

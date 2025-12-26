@@ -77,16 +77,37 @@ const taskSlice = createSlice({
       } else {
         currentTask.completed = false;
 
-        const isDeadlinePassed =
-          new Date(currentTask.deadline).getTime() < Date.now();
+        // const isDeadlinePassed =
+        //   new Date(currentTask.deadline).getTime() < Date.now();
 
-        currentTask.status = isDeadlinePassed ? "Deadline Reached" : "Pending";
+        currentTask.status = "Pending";
       }
 
+      localStorage.setItem("tasks", JSON.stringify(state.tasks));
+    },
+    checkDeadline(state) {
+      const now = new Date().getTime();
+
+      state.tasks.forEach((task) => {
+        const deadlineTime = new Date(task.deadline).getTime();
+
+        if (
+          !task.completed &&
+          task.status !== "Deadline Reached" &&
+          deadlineTime < now
+        ) {
+          task.status = "Deadline Reached";
+        }
+        localStorage.setItem("tasks", JSON.stringify(state.tasks));
+      });
+    },
+    deleteAll(state) {
+      state.tasks = [];
       localStorage.setItem("tasks", JSON.stringify(state.tasks));
     },
   },
 });
 
 export default taskSlice;
-export const { addTask, deleteTask, toggleTask } = taskSlice.actions;
+export const { addTask, deleteTask, toggleTask, checkDeadline, deleteAll } =
+  taskSlice.actions;

@@ -1,3 +1,4 @@
+import TaskLineChart from "../components/LineCharts";
 import TaskCard from "../components/TaskCard";
 import TaskDets from "../components/TaskDets";
 
@@ -25,8 +26,9 @@ const Home = () => {
         />
       </div>
       <div className="container grid grid-col-1 justify-self-center mt-10">
-        <div className="bg-[#1E1F25] h-[350px] rounded-lg mx-3 p-8">
+        <div className="bg-[#1E1F25] rounded-lg mx-3 p-8">
           <p className="text-[20px] font-bold">Tasks Line Chart</p>
+          <TaskLineChart />
         </div>
       </div>
       <div className="container grid grid-col-1 justify-self-center mt-8">
