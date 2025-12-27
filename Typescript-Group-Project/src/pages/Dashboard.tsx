@@ -1,8 +1,14 @@
 import CustomDelBtn from "../components/CustomDelBtn";
 import { deleteUser } from "../features/auth/authSlice";
+import { deleteAll } from "../features/tasks/taskSlice";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
+
 import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+
 import bgImage from "../assets/minimal-orange.jpg";
+
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import {
@@ -11,7 +17,6 @@ import {
   markAsNotified,
 } from "../utils/helpers";
 import CustomInput from "../components/CustomInput";
-import { deleteAll } from "../features/tasks/taskSlice";
 
 const Dashboard = () => {
   const dispatch = useAppDispatch();
@@ -20,6 +25,7 @@ const Dashboard = () => {
     state.task.tasks.filter((t) => t.userId === userData?.id)
   );
 
+  const [showPass, setShowPass] = useState(true);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState<
     "All" | "Pending" | "Completed" | "Deadline Reached"
@@ -108,8 +114,25 @@ const Dashboard = () => {
           <div className="text-2xl py-2">
             Username : {userData?.username}
             <br />
-            Password : {userData?.password}
-            <br />
+            <div className="flex justify-between">
+              {!showPass ? (
+                <>
+                  <p>Password : {userData?.password}</p>
+                  <VisibilityOffIcon
+                    sx={{ cursor: "pointer" }}
+                    onClick={() => setShowPass(true)}
+                  />
+                </>
+              ) : (
+                <>
+                  <p>Password : ***********</p>
+                  <VisibilityIcon
+                    sx={{ cursor: "pointer" }}
+                    onClick={() => setShowPass(false)}
+                  />
+                </>
+              )}
+            </div>
             Role : {userData?.role}
           </div>
           <div className="flex justify-end gap-2">

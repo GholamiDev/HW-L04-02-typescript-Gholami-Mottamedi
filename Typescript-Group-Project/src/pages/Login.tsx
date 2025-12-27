@@ -7,7 +7,7 @@ import CustomForm from "../components/CustomForm";
 import CustomInput from "../components/CustomInput";
 import Error from "../components/ErrorMsg";
 import { useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useAppDispatch } from "../store/hooks";
 import { setCurrentUser } from "../features/auth/authSlice";
 import type { LoginFormValues } from "../types/types";
@@ -86,6 +86,15 @@ const Login = () => {
         size="text-[24px]"
         mt="mt-8"
       />
+      <p className="mt-2">
+        Dont have an account?{" "}
+        <Link
+          className="text-[#5051f4] hover:text-[#7678f5] transition .4 "
+          to={`/register?role=${role}`}
+        >
+          Register Now
+        </Link>
+      </p>
     </CustomForm>
   );
 };

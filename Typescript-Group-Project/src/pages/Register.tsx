@@ -8,7 +8,7 @@ import CustomInput from "../components/CustomInput";
 import Error from "../components/ErrorMsg";
 
 import { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useAppDispatch } from "../store/hooks";
 import { register as registerAction } from "../features/auth/authSlice";
 import { setCurrentUser } from "../features/auth/authSlice";
@@ -106,6 +106,15 @@ const Register = () => {
         size="text-[24px]"
         mt="mt-8"
       />
+      <p className="mt-2">
+        Already have an account?{" "}
+        <Link
+          className="text-[#5051f4] hover:text-[#7678f5] transition .4 "
+          to={`/login?role=${role}`}
+        >
+          Login
+        </Link>
+      </p>
     </CustomForm>
   );
 };
